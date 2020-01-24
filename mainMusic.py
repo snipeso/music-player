@@ -115,6 +115,7 @@ for song in CONF["stimuli"]["songs"]:
 
     # save data to file
     datalog.flush()
+    core.wait(2)
 
 ###########
 # Concluion
