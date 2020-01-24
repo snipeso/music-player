@@ -1,26 +1,23 @@
 from config.updateConfig import UpdateConfig
 
-sampleCONF = {
+musicCONF = {
     "task": {
         "name": "sample",
     },
     "instructions": {
-        "text": "Give instructions",
+        "text": "Just listen to the music.",
         "startPrompt": "Press any key to continue. Press q to quit.",
         "alarm": "horn.wav",
     },
     "stimuli": {
-        "backgroundColor": {"versionMain": "black", "versionDemo": "blue", "versionDebug": "gray"},
+        # TODO: counterbalance order of presentation
+        "songs": ["GOT.wav", "Tell.wav"],
+        "backgroundColor": "black",
     },
-}
-
-sampleTriggers = {
-    "example": 10
 }
 
 
 updateCofig = UpdateConfig()
-updateCofig.addContent(sampleCONF)
-updateCofig.addTriggers(sampleTriggers)
+updateCofig.addContent(musicCONF)
 
 CONF = updateCofig.getConfig()

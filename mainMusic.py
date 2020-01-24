@@ -7,13 +7,12 @@ import sys
 import math
 
 from screen import Screen
-from scorer import Scorer
 from trigger import Trigger
 from psychopy import core, event, sound
 from psychopy.hardware import keyboard
 
 from datalog import Datalog
-from config.configSample import CONF
+from config.configMusic import CONF
 
 #########################################################################
 
@@ -37,7 +36,6 @@ mainClock = core.MonotonicClock()  # starts clock for timestamping events
 
 alarm = sound.Sound(os.path.join('sounds', CONF["instructions"]["alarm"]),
                     stereo=True)
-scorer = Scorer()
 
 trigger = Trigger(CONF["trigger"]["serial_device"],
                   CONF["sendTriggers"], CONF["trigger"]["labels"])
@@ -94,16 +92,29 @@ screen.show_cue("START")
 trigger.send("Start")
 core.wait(CONF["timing"]["cue"])
 
+screen.show_blank()
+core.wait(1)
 
 #################
 # Main experiment
 #################
 
-# customize
-datalog["trialID"] = trigger.sendTriggerId()
 
-# save data to file
-datalog.flush()
+for song in CONF["stimuli"]["songs"]:
+    datalog["trialID"] = trigger.sendTriggerId()
+    datalog["song"] = song
+    song = sound.Sound(os.path.join("sounds", song))
+    core.wait(1)
+    song.play()
+    trigger.send("Stim")
+    songTime = core.CountdownTimer(song.getDuration())
+    while songTime.getTime() > 0:
+        key = kb.getKeys()
+        if key:
+            quitExperimentIf(key[0].name == 'q')
+
+    # save data to file
+    datalog.flush()
 
 ###########
 # Concluion
