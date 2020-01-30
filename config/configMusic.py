@@ -11,7 +11,7 @@ musicCONF = {
     },
     "stimuli": {
         # TODO: counterbalance order of presentation
-        "songs": ["GOT.wav", "Tell.wav"],
+        "songs": ["Tell.wav", "GOT.wav", ],
         "backgroundColor": "black",
     },
 }
