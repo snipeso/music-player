@@ -8,6 +8,7 @@ musicCONF = {
         "text": "Just listen to the music.",
         "startPrompt": "Press any key to continue. Press q to quit.",
         "alarm": "horn.wav",
+        "questionnaireReminder": "answerQuestionnaire.wav"
     },
     "stimuli": {
         # TODO: counterbalance order of presentation
