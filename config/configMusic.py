@@ -2,7 +2,7 @@ from config.updateConfig import UpdateConfig
 
 musicCONF = {
     "task": {
-        "name": "sample",
+        "name": "music",
     },
     "instructions": {
         "text": "Just listen to the music.",
