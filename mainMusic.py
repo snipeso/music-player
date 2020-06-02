@@ -37,9 +37,6 @@ kb = keyboard.Keyboard()
 
 mainClock = core.MonotonicClock()  # starts clock for timestamping events
 
-alarm = sound.Sound(os.path.join('sounds', CONF["instructions"]["alarm"]),
-                    stereo=True)
-
 questionnaireReminder = sound.Sound(os.path.join(
     'sounds', CONF["instructions"]["questionnaireReminder"]), stereo=True)
 
